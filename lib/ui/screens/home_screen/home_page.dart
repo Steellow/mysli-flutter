@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysli/ui/screens/home_screen/bottom_bar.dart';
 import 'package:mysli/ui/screens/home_screen/list_view_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,11 +9,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Mysli"),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          ListViewItem(),
-          ListViewItem(),
-          ListViewItem(),
+          Expanded(
+            child: ListView(
+              children: [
+                ListViewItem(),
+                ListViewItem(),
+                ListViewItem(),
+              ],
+            ),
+          ),
+          BottomBar(),
         ],
       ),
     );

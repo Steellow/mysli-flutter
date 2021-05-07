@@ -16,7 +16,13 @@ class _ListViewItemState extends State<ListViewItem> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      title: Text(widget.item.name),
+      title: Text(
+        widget.item.name,
+        style: TextStyle(
+          decoration: _isSelected ? TextDecoration.lineThrough : null,
+          color: _isSelected ? Colors.grey : null,
+        ),
+      ),
       value: _isSelected,
       onChanged: (bool newValue) {
         setState(() {

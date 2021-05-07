@@ -23,7 +23,7 @@ class _BottomBarState extends State<BottomBar> {
           labelText: 'Add items',
         ),
         onSubmitted: (value) {
-          BlocProvider.of<ItemlistCubit>(context).addItem(Item(value));
+          BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: value));
           _controller.clear();
         },
       ),

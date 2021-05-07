@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/ui/screens/home_screen/bottom_bar.dart';
 import 'package:mysli/ui/screens/home_screen/list_view_item.dart';
 
@@ -12,12 +14,16 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: [
-                ListViewItem(),
-                ListViewItem(),
-                ListViewItem(),
-              ],
+            child: BlocBuilder<ItemlistCubit, ItemlistState>(
+              builder: (context, state) {
+                print("home_page.dart: BlocBuilder builder function called");
+                return ListView.builder(
+                  itemCount: state.items.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListViewItem(item: state.items[index]);
+                  },
+                );
+              },
             ),
           ),
           BottomBar(),

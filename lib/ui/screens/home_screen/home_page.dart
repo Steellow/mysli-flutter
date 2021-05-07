@@ -15,12 +15,16 @@ class HomePage extends StatelessWidget {
         children: [
           Expanded(
             child: BlocBuilder<ItemlistCubit, ItemlistState>(
+              buildWhen: (oldState, newState) {
+                if (oldState.items.length == newState.items.length) return false;
+                return true;
+              },
               builder: (context, state) {
                 print("home_page.dart: BlocBuilder builder function called");
                 return ListView.builder(
                   itemCount: state.items.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListViewItem(item: state.items[index]);
+                    return ListViewItem(index: index);
                   },
                 );
               },

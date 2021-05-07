@@ -8,5 +8,5 @@ class Item extends Equatable {
   Item({this.name, this.amount = 1, this.checked = false});
 
   @override
-  List<Object> get props => [name];
+  List<Object> get props => [name, amount, checked];
 }

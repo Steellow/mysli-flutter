@@ -11,4 +11,10 @@ class ItemlistCubit extends Cubit<ItemlistState> {
     List<Item> listWithNewItem = [...state.items, newItem];
     emit(ItemlistState(items: listWithNewItem));
   }
+
+  void checkItem(int index, bool value) {
+    List<Item> newList = [...state.items];
+    newList[index].checked = value;
+    emit(ItemlistState(items: newList));
+  }
 }

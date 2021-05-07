@@ -6,8 +6,8 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 - General
   - Use generated routes
+  - Use HydratedMixin to persist state
 - List view
-  - Pass only index to ListViewItem, and then use BlocBuilder to get the correct item?
   - Show nice icon when empty
   - Grouped list package?
   - Swipe gestures

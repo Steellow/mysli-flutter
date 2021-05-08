@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/ui/screens/home_screen/bottom_bar.dart';
+import 'package:mysli/ui/screens/home_screen/home_app_bar.dart';
 import 'package:mysli/ui/screens/home_screen/list_view_item.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Mysli"),
-      ),
+      appBar: HomeAppBar(),
       body: Column(
         children: [
           Expanded(

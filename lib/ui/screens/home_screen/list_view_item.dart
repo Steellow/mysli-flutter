@@ -17,10 +17,17 @@ class _ListViewItemState extends State<ListViewItem> {
   Widget build(BuildContext context) {
     return BlocBuilder<ItemlistCubit, ItemlistState>(
       buildWhen: (oldState, newState) {
-        if (oldState.items[widget.index] == newState.items[widget.index]) return false;
-        return true;
+        if (widget.index >= newState.items.length) {
+          // Comparing item at index which doesn't exist results in errors, so first we check if there is an item in that index
+          return false;
+        } else if (oldState.items[widget.index] == newState.items[widget.index]) {
+          return false;
+        } else {
+          return true;
+        }
       },
       builder: (context, state) {
+        print("ListViewItem: BlocBuilder builder function called");
         Item item = state.items[widget.index];
         return CheckboxListTile(
           title: Text(
@@ -33,7 +40,7 @@ class _ListViewItemState extends State<ListViewItem> {
           value: item.checked,
           onChanged: (bool newValue) {
             setState(() {
-              BlocProvider.of<ItemlistCubit>(context).checkItem(widget.index, newValue);
+              BlocProvider.of<ItemlistCubit>(context).tickItem(widget.index, newValue);
             });
           },
         );

@@ -30,12 +30,23 @@ class _ListViewItemState extends State<ListViewItem> {
         print("ListViewItem: BlocBuilder builder function called");
         Item item = state.items[widget.index];
         return CheckboxListTile(
-          title: Text(
-            item.name,
-            style: TextStyle(
-              decoration: item.ticked ? TextDecoration.lineThrough : null,
-              color: item.ticked ? Colors.grey : null,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                item.name,
+                style: TextStyle(
+                  decoration: item.ticked ? TextDecoration.lineThrough : null,
+                  color: item.ticked ? Colors.grey : null,
+                ),
+              ),
+              Text(
+                item.amount.toString(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+            ],
           ),
           value: item.ticked,
           onChanged: (bool newValue) {

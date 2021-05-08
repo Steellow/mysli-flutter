@@ -6,7 +6,6 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 - General
   - Use generated routes
-  - Use HydratedMixin to persist state
 - List view
   - Show nice icon when empty
   - Grouped list package?
@@ -21,6 +20,7 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
     - Move to bottom of list
       - Button to delete checked items
     - Or delete immediately?
+  - Add +1 amount if item is already in the list
 - Settings
   - Sort categories
 - Extra stuff

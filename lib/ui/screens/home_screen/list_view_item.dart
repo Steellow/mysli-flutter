@@ -33,11 +33,11 @@ class _ListViewItemState extends State<ListViewItem> {
           title: Text(
             item.name,
             style: TextStyle(
-              decoration: item.checked ? TextDecoration.lineThrough : null,
-              color: item.checked ? Colors.grey : null,
+              decoration: item.ticked ? TextDecoration.lineThrough : null,
+              color: item.ticked ? Colors.grey : null,
             ),
           ),
-          value: item.checked,
+          value: item.ticked,
           onChanged: (bool newValue) {
             setState(() {
               BlocProvider.of<ItemlistCubit>(context).tickItem(widget.index, newValue);

@@ -17,12 +17,12 @@ class ItemlistCubit extends Cubit<ItemlistState> with HydratedMixin {
 
   void tickItem(int index, bool value) {
     List<Item> newList = [...state.items];
-    newList[index].checked = value;
+    newList[index] = newList[index].copyWith(ticked: value);
     emit(ItemlistState(items: newList));
   }
 
   void deleteTicked() {
-    List<Item> newList = [...state.items].where((e) => !e.checked).toList();
+    List<Item> newList = [...state.items].where((e) => !e.ticked).toList();
     emit(ItemlistState(items: newList));
   }
 

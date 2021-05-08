@@ -3,20 +3,21 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Item extends Equatable {
-  String name;
-  int amount;
-  bool checked;
+  final String name;
+  final int amount;
+  final bool ticked;
 
-  Item({this.name, this.amount = 1, this.checked = false});
+  const Item({this.name, this.amount = 1, this.ticked = false});
 
   @override
-  List<Object> get props => [name, amount, checked];
+  List<Object> get props => [name, amount, ticked];
 
+  // Generated methods:
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'amount': amount,
-      'checked': checked,
+      'ticked': ticked,
     };
   }
 
@@ -24,11 +25,23 @@ class Item extends Equatable {
     return Item(
       name: map['name'],
       amount: map['amount'],
-      checked: map['checked'],
+      ticked: map['ticked'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory Item.fromJson(String source) => Item.fromMap(json.decode(source));
+
+  Item copyWith({
+    String name,
+    int amount,
+    bool ticked,
+  }) {
+    return Item(
+      name: name ?? this.name,
+      amount: amount ?? this.amount,
+      ticked: ticked ?? this.ticked,
+    );
+  }
 }

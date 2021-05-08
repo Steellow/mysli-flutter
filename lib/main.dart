@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/ui/screens/home_screen/home_page.dart';
+import 'package:mysli/util/styles.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -21,10 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mysli',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        brightness: Brightness.dark,
-      ),
+      theme: Styles().theme,
       themeMode: ThemeMode.dark,
       home: BlocProvider(
         create: (context) => ItemlistCubit(),

@@ -16,6 +16,7 @@ class _BottomBarState extends State<BottomBar> {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: TextField(
+        textCapitalization: TextCapitalization.sentences,
         controller: _controller,
         textInputAction: TextInputAction.go,
         decoration: InputDecoration(

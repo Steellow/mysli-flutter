@@ -22,3 +22,13 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
   - Sort categories
 - Extra stuff
   - Save presets for foods
+- Release
+  - Add vibration to android manifest
+
+## Stuff I've learned
+
+- BLoC
+
+## Notes for myself
+
+- Swipeable ListTiles aren't as satisfying as I thought they would be. Might change it to something different.

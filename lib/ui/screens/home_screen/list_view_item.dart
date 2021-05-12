@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/model/item.dart';
+import 'package:mysli/ui/screens/home_screen/list_view_item_bg.dart';
+import 'package:swipeable/swipeable.dart';
+import 'package:vibration/vibration.dart';
 
 class ListViewItem extends StatelessWidget {
   final int index;
 
   const ListViewItem({Key key, @required this.index}) : super(key: key);
+
+  void _vibrate() async {
+    if (await Vibration.hasVibrator()) {
+      Vibration.vibrate(duration: 60);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,29 +33,35 @@ class ListViewItem extends StatelessWidget {
       builder: (context, state) {
         print("ListViewItem: BlocBuilder builder function called");
         Item item = state.items[index];
-        return CheckboxListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                item.name,
-                style: TextStyle(
-                  decoration: item.ticked ? TextDecoration.lineThrough : null,
-                  color: item.ticked ? Colors.grey : null,
+        return Swipeable(
+          onSwipeLeft: _vibrate,
+          onSwipeRight: _vibrate,
+          background: ListViewItemBg(),
+          child: CheckboxListTile(
+            tileColor: Theme.of(context).canvasColor, // Defaults to transparent and would see background row
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  item.name,
+                  style: TextStyle(
+                    decoration: item.ticked ? TextDecoration.lineThrough : null,
+                    color: item.ticked ? Colors.grey : null,
+                  ),
                 ),
-              ),
-              Text(
-                item.amount.toString(),
-                style: const TextStyle(
-                  color: Colors.grey,
+                Text(
+                  item.amount.toString(),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            value: item.ticked,
+            onChanged: (bool newValue) {
+              BlocProvider.of<ItemlistCubit>(context).tickItem(index, newValue);
+            },
           ),
-          value: item.ticked,
-          onChanged: (bool newValue) {
-            BlocProvider.of<ItemlistCubit>(context).tickItem(index, newValue);
-          },
         );
       },
     );

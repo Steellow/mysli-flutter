@@ -7,6 +7,7 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 - General
   - Use generated routes
 - List view
+  - Disable trash can button when none ticked
   - Show nice icon when empty
   - Grouped list package?
   - Remember & suggest old items

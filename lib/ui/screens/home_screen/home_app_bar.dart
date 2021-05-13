@@ -15,6 +15,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: const Icon(Icons.delete),
+          tooltip: "Delete ticked items",
           onPressed: () {
             BlocProvider.of<ItemlistCubit>(context).deleteTicked();
           },

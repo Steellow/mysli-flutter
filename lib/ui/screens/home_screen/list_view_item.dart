@@ -34,8 +34,14 @@ class ListViewItem extends StatelessWidget {
         print("ListViewItem: BlocBuilder builder function called");
         Item item = state.items[index];
         return Swipeable(
-          onSwipeLeft: _vibrate,
-          onSwipeRight: _vibrate,
+          onSwipeLeft: () {
+            _vibrate();
+            BlocProvider.of<ItemlistCubit>(context).changeAmount(index, 1);
+          },
+          onSwipeRight: () {
+            _vibrate();
+            BlocProvider.of<ItemlistCubit>(context).changeAmount(index, -1);
+          },
           background: ListViewItemBg(),
           child: CheckboxListTile(
             tileColor: Theme.of(context).canvasColor, // Defaults to transparent and would see background row

@@ -9,15 +9,14 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 - List view
   - Show nice icon when empty
   - Grouped list package?
-  - Swipe gestures
-    - <-- Decrease/delete
-    - --> Increase
   - Remember & suggest old items
     - Press & hold suggestion to delete it
   - Categories
   - Click to check
     - Move to bottom of list
   - Add +1 amount if item is already in the list
+  - Change swipeable to buttons
+    - Easier to customize and maintain
 - Settings
   - Sort categories
 - Extra stuff
@@ -28,6 +27,7 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 ## Stuff I've learned
 
 - BLoC
+- Immutable objects are faster to compare
 
 ## Notes for myself
 

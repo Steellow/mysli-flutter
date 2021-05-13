@@ -21,6 +21,17 @@ class ItemlistCubit extends Cubit<ItemlistState> with HydratedMixin {
     emit(ItemlistState(items: newList));
   }
 
+  void changeAmount(int index, int changeAmount) {
+    List<Item> newList = [...state.items];
+    Item newItem = newList[index];
+    if (newItem.amount + changeAmount < 1) {
+      print("Amount is already 1, can't go negative");
+      return;
+    }
+    newList[index] = newItem.copyWith(amount: newItem.amount + changeAmount);
+    emit(ItemlistState(items: newList));
+  }
+
   void deleteTicked() {
     List<Item> newList = [...state.items].where((e) => !e.ticked).toList();
     emit(ItemlistState(items: newList));

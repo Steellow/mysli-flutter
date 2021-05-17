@@ -7,6 +7,7 @@ class ItemlistState {
     @required this.items,
   });
 
+  // Generated methods
   Map<String, dynamic> toMap() {
     return {
       'items': items?.map((x) => x.toMap())?.toList(),

@@ -10,11 +10,10 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
   - Disable trash can button when none ticked
   - Show nice icon when empty
   - Grouped list package?
-  - Remember & suggest old items
+  - Suggestions
     - Press & hold suggestion to delete it
+    - Add HydratedMixin
   - Categories
-  - Click to check
-    - Move to bottom of list
   - Add +1 amount if item is already in the list
   - Change swipeable to buttons
     - Easier to customize and maintain
@@ -24,6 +23,11 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
   - Save presets for foods
 - Release
   - Add vibration to android manifest
+- Investigate:
+  - ListViewItem: BlocBuilder builder function called twice after TextFieldSubmit
+    - Doesn't happen if selecting suggestion
+- Documentaion
+  - Write about different blocs
 
 ## Stuff I've learned
 

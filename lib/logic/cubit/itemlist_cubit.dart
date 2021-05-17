@@ -37,6 +37,7 @@ class ItemlistCubit extends Cubit<ItemlistState> with HydratedMixin {
     emit(ItemlistState(items: newList));
   }
 
+  // Generated methods
   @override
   ItemlistState fromJson(Map<String, dynamic> json) {
     return ItemlistState.fromMap(json);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysli/logic/cubit/itemarchive_cubit.dart';
 import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/ui/screens/home_screen/bottom_bar.dart';
 import 'package:mysli/ui/screens/home_screen/home_app_bar.dart';
@@ -29,7 +30,10 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          BottomBar(),
+          BlocProvider(
+            create: (context) => ItemarchiveCubit(),
+            child: BottomBar(),
+          ),
         ],
       ),
     );

@@ -21,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
       BlocProvider.of<ItemarchiveCubit>(context).addItem(ArchivedItem(name: inputValue));
     }
 
-    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: archivedItem?.name ?? inputValue));
+    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: archivedItem?.name ?? inputValue.trim()));
     _controller.clear();
   }
 

@@ -5,6 +5,7 @@ import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/model/archived_item.dart';
 import 'package:mysli/model/item.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:mysli/ui/widgets/confirm_dialog.dart';
 
 class BottomBar extends StatefulWidget {
   @override
@@ -16,12 +17,15 @@ class _BottomBarState extends State<BottomBar> {
 
   void _onTextFieldSubmit(String inputValue) {
     // Context is available here because this is stateful widget
+
+    inputValue = inputValue.trim();
+
     ArchivedItem archivedItem = BlocProvider.of<ItemarchiveCubit>(context).getItemByName(inputValue);
     if (archivedItem == null) {
       BlocProvider.of<ItemarchiveCubit>(context).addItem(ArchivedItem(name: inputValue));
     }
 
-    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: archivedItem?.name ?? inputValue.trim()));
+    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: archivedItem?.name ?? inputValue));
     _controller.clear();
   }
 
@@ -59,9 +63,19 @@ class _BottomBarState extends State<BottomBar> {
           }
           return null;
         },
-        itemBuilder: (context, suggestion) {
+        itemBuilder: (_, suggestion) {
+          // Tried to make seperate widget for item suggestion,
+          // but ItemarchiveCubit wasn't available there.
+          // Also the underscore parameter is supposed to be context
+          // but we want to use old context here to access the cubit.
+          // We could just use new BlocProvider but not worth imo.
           return ListTile(
-            // TODO: Long press to delete suggestion (also seperate widget?)
+            onLongPress: () async {
+              if (await confirmDialog(context) ?? false) {
+                print("Deleting item " + suggestion.name);
+                BlocProvider.of<ItemarchiveCubit>(context).deleteItem(suggestion.name);
+              }
+            },
             title: Text(suggestion.name),
           );
         },

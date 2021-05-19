@@ -1,12 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mysli/model/archived_item.dart';
-import 'package:mysli/model/item.dart';
 
 part 'itemarchive_state.dart';
 
 class ItemarchiveCubit extends Cubit<ItemarchiveState> {
-  ItemarchiveCubit() : super(ItemarchiveState(items: List<ArchivedItem>.filled(1, ArchivedItem(name: "Banana"), growable: true))); // TODO: Remove default item
+  ItemarchiveCubit() : super(ItemarchiveState(items: List<ArchivedItem>.filled(1, ArchivedItem(name: "Long press suggestions to delete"), growable: true)));
 
   List<ArchivedItem> getFiltered(String filter) {
     return state.items.where((item) {
@@ -23,5 +22,9 @@ class ItemarchiveCubit extends Cubit<ItemarchiveState> {
 
   void addItem(ArchivedItem newItem) {
     emit(ItemarchiveState(items: [...state.items, newItem]));
+  }
+
+  void deleteItem(String name) {
+    emit(ItemarchiveState(items: [...state.items].where((e) => e.name != name).toList()));
   }
 }

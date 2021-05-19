@@ -26,6 +26,9 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 - Investigate:
   - ListViewItem: BlocBuilder builder function called twice after TextFieldSubmit
     - Doesn't happen if selecting suggestion
+  - ````Note: C:\src\flutter.pub-cache\hosted\pub.dartlang.org\flutter_keyboard_visibility-5.0.2\android\src\main\java\com\jrai\flutter_keyboard_visibility\FlutterKeyboardVisibilityPlugin.java uses or overrides a deprecated API.
+        Note: Recompile with -Xlint:deprecation for details.```
+    ````
 - Documentaion
   - Write about different blocs
 

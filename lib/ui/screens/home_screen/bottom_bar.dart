@@ -14,10 +14,14 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   TextEditingController _controller = TextEditingController();
 
-  void _onTextFieldSubmit(String value) {
+  void _onTextFieldSubmit(String inputValue) {
     // Context is available here because this is stateful widget
-    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: value));
-    BlocProvider.of<ItemarchiveCubit>(context).addItem(ArchivedItem(name: value));
+    ArchivedItem archivedItem = BlocProvider.of<ItemarchiveCubit>(context).getItemByName(inputValue);
+    if (archivedItem == null) {
+      BlocProvider.of<ItemarchiveCubit>(context).addItem(ArchivedItem(name: inputValue));
+    }
+
+    BlocProvider.of<ItemlistCubit>(context).addItem(Item(name: archivedItem?.name ?? inputValue));
     _controller.clear();
   }
 

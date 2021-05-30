@@ -7,4 +7,8 @@ class Styles {
         toggleableActiveColor: Colors.red, // Checkbox when ticked
         accentColor: Colors.red, // TextField border
       );
+
+  static const TextStyle emptyCartText = TextStyle(
+    fontSize: 20,
+  );
 }

@@ -26,8 +26,19 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
   - ````Note: C:\src\flutter.pub-cache\hosted\pub.dartlang.org\flutter_keyboard_visibility-5.0.2\android\src\main\java\com\jrai\flutter_keyboard_visibility\FlutterKeyboardVisibilityPlugin.java uses or overrides a deprecated API.
         Note: Recompile with -Xlint:deprecation for details.```
     ````
-- Documentaion
-  - Write about different blocs
+
+## Architecture
+
+- Cubits
+  - Itemlist_cubit
+    - Holds list of Item objcts
+    - This is the main cubit which remembers current items in list
+    - Has HydratedMixin to persist state
+  - Itemarchive_cubit
+    - Holds list of ArchivedItems objects
+    - List of all items ever added to the list
+    - Item suggestions are fetched from here when typing on the bottom bar
+    - ArchivedItems can be deleted by long-pressing the suggestion
 
 ## Stuff I've learned
 

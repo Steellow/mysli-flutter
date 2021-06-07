@@ -13,11 +13,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: const Text("Mysli"),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.delete),
-          tooltip: "Delete ticked items",
-          onPressed: () {
-            BlocProvider.of<ItemlistCubit>(context).deleteTicked();
+        BlocBuilder<ItemlistCubit, ItemlistState>(
+          buildWhen: (oldState, newState) {
+            if (oldState.items.length == newState.items.length) return false;
+            return true;
+          },
+          builder: (context, state) {
+            return IconButton(
+              icon: const Icon(Icons.delete),
+              tooltip: "Delete ticked items",
+              onPressed: state.items.length > 0
+                  ? () {
+                      BlocProvider.of<ItemlistCubit>(context).deleteTicked();
+                    }
+                  : null,
+            );
           },
         ),
       ],

@@ -8,7 +8,7 @@ import 'package:mysli/model/item.dart';
 part 'itemlist_state.dart';
 
 class ItemlistCubit extends Cubit<ItemlistState> with HydratedMixin {
-  ItemlistCubit() : super(ItemlistState(items: List<Item>.filled(1, Item(name: "test"), growable: true)));
+  ItemlistCubit() : super(ItemlistState(items: List<Item>.filled(1, Item(name: "Welcome!"), growable: true)));
 
   void addItem(Item newItem) {
     List<Item> listWithNewItem = [...state.items, newItem];

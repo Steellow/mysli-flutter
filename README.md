@@ -7,16 +7,11 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 - General
   - Use generated routes
 - List view
-  - Suggestions
-    - Add HydratedMixin
   - Categories
     - Grouped list package?
-      - Delete vibration package
   - Add +1 amount if item is already in the list
 - Settings
   - Sort categories
-- Extra stuff
-  - Save presets for foods
 - Investigate:
   - ListViewItem: BlocBuilder builder function called twice after TextFieldSubmit
     - Doesn't happen if selecting suggestion
@@ -26,16 +21,25 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 ## Architecture
 
-- Cubits
-  - Itemlist_cubit
-    - Holds list of Item objcts
-    - This is the main cubit which remembers current items in list
-    - Has HydratedMixin to persist state
-  - Itemarchive_cubit
-    - Holds list of ArchivedItems objects
-    - List of all items ever added to the list
-    - Item suggestions are fetched from here when typing on the bottom bar
-    - ArchivedItems can be deleted by long-pressing the suggestion
+- State management: **Bloc**
+  - All blocs/cubits have HydratedMixin to persist state
+    - HydratedMixin uses Hive underhood thus should be super fast
+  - Different cubits:
+    - **Itemlist_cubit**
+      - Holds list of Item objcts
+      - This is the main cubit which remembers current items in list
+    - **Itemarchive_cubit**
+      - Holds list of ArchivedItems objects
+      - List of all items ever added to the list
+      - Item suggestions are fetched from here when typing on the bottom bar
+      - ArchivedItems can be deleted by long-pressing the suggestion
+- Models
+  - **Item**
+    - Regular, single item in the list
+  - **ArchivedItem**
+    - Items which have been added to the list at some point
+    - Stores name and category
+    - Are converted to regular items when added to list
 
 ## Stuff I've learned
 
@@ -44,5 +48,4 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 ## Notes for myself
 
-- Swipeable ListTiles aren't as satisfying as I thought they would be. Might change it to something different.
 - Empty screen illustration is from https://www.opendoodles.com/

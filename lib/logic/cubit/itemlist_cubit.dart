@@ -32,6 +32,12 @@ class ItemlistCubit extends Cubit<ItemlistState> with HydratedMixin {
     emit(ItemlistState(items: newList));
   }
 
+  void changeCategory(int index, String category) {
+    List<Item> newList = [...state.items];
+    newList[index] = newList[index].copyWith(category: category);
+    emit(ItemlistState(items: newList));
+  }
+
   void deleteTicked() {
     List<Item> newList = [...state.items].where((e) => !e.ticked).toList();
     emit(ItemlistState(items: newList));

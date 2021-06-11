@@ -23,6 +23,12 @@ class ItemarchiveCubit extends Cubit<ItemarchiveState> with HydratedMixin {
     );
   }
 
+  void changeCategory(int index, String category) {
+    List<ArchivedItem> newList = [...state.items];
+    newList[index] = newList[index].copyWith(category: category);
+    emit(ItemarchiveState(items: newList));
+  }
+
   void addItem(ArchivedItem newItem) {
     emit(ItemarchiveState(items: [...state.items, newItem]));
   }

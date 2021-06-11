@@ -51,7 +51,6 @@ class _BottomBarState extends State<BottomBar> {
             labelText: 'Add items',
           ),
         ),
-
         hideOnEmpty: true,
         hideOnLoading: true, // If false causes ugly visual glitch on keyboard open
         debounceDuration: Duration(milliseconds: 0), // No timer to keep it snappy (Add timer is performance suffers?)

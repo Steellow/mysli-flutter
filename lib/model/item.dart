@@ -2,15 +2,18 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import 'package:mysli/util/const.dart';
+
 class Item extends Equatable {
   final String name;
   final int amount;
   final bool ticked;
+  final String category;
 
-  const Item({this.name, this.amount = 1, this.ticked = false});
+  const Item({this.name, this.amount = 1, this.ticked = false, this.category = UNCATEGORIZED});
 
   @override
-  List<Object> get props => [name, amount, ticked];
+  List<Object> get props => [name, amount, ticked, category];
 
   // Generated methods:
   Map<String, dynamic> toMap() {
@@ -18,6 +21,7 @@ class Item extends Equatable {
       'name': name,
       'amount': amount,
       'ticked': ticked,
+      'category': category,
     };
   }
 
@@ -26,6 +30,7 @@ class Item extends Equatable {
       name: map['name'],
       amount: map['amount'],
       ticked: map['ticked'],
+      category: map['category'],
     );
   }
 
@@ -37,11 +42,13 @@ class Item extends Equatable {
     String name,
     int amount,
     bool ticked,
+    String category,
   }) {
     return Item(
       name: name ?? this.name,
       amount: amount ?? this.amount,
       ticked: ticked ?? this.ticked,
+      category: category ?? this.category,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:mysli/logic/cubit/itemarchive_cubit.dart';
 import 'package:mysli/logic/cubit/itemlist_cubit.dart';
 import 'package:mysli/ui/screens/home_screen/home_page.dart';
 import 'package:mysli/util/styles.dart';
@@ -24,8 +25,15 @@ class MyApp extends StatelessWidget {
       title: 'Mysli',
       theme: Styles().theme,
       themeMode: ThemeMode.dark,
-      home: BlocProvider(
-        create: (context) => ItemlistCubit(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<ItemlistCubit>(
+            create: (context) => ItemlistCubit(),
+          ),
+          BlocProvider<ItemarchiveCubit>(
+            create: (context) => ItemarchiveCubit(),
+          ),
+        ],
         child: HomePage(),
       ),
     );

@@ -6,12 +6,20 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 - General
   - Use generated routes
+  - Enable null-safety
 - List view
   - Categories
-    - Grouped list package?
+    - [grouped_list](https://pub.dev/packages/grouped_list) package?
+    - Update architecture
+    - Dialog
+      - Create new categories
+      - Delete categories
   - Add +1 amount if item is already in the list
 - Settings
-  - Sort categories
+  - Manage categories
+    - Get instance of CategoryCubit with generated routes
+    - Change category order
+    - Delete categories
 - Investigate:
   - ListViewItem: BlocBuilder builder function called twice after TextFieldSubmit
     - Doesn't happen if selecting suggestion
@@ -36,6 +44,8 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
       - List of all items ever added to the list
       - Item suggestions are fetched from here when typing on the bottom bar
       - ArchivedItems can be deleted by long-pressing the suggestion
+    - **Category_cubit**
+      - List of known categories
 - Models
   - **Item**
     - Regular, single item in the list
@@ -48,6 +58,7 @@ Mysli (=My Shopping List) is a free and open source shopping list app. I didn't 
 
 - BLoC
 - Immutable objects are faster to compare
+- [AlertDialog](https://api.flutter.dev/flutter/material/AlertDialog-class.html) is for informing the user, [SimpleDialog](https://api.flutter.dev/flutter/material/SimpleDialog-class.html) is for showing options
 
 ## Notes for myself
 

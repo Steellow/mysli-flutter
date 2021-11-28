@@ -2,6 +2,7 @@
 
 Mysli (=My Shopping List) is a free and open source shopping list app. I didn't find a good one which met all my requirements so I made this.
 
+> ⚠ **Started recreating with React Native, check [the new repo](https://github.com/Steellow/mysli)**
 ## Ideas (a.k.a. todo)
 
 - General
